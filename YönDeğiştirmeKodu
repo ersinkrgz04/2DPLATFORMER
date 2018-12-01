@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerScript : MonoBehaviour {
+
+    [SerializeField]
+    private float movementSpeed; //Hareket hızı için değişken yaptık
+
+    private Rigidbody2D myRigidBody2D; //Kodun bağlı olduğu objeynin RigidBody'sine değişken yaptık
+    
+    //Yeni
+    private bool facingRight; //Karakterin sağa bakıp bakmadığına göre true yada false alır.
+
+    void Start () {
+        myRigidBody2D = GetComponent<Rigidbody2D>(); //myRigidBody2D değişkenini Editörde bulunan Rigidbody'ye referans yaptık.
+        facingRight = true;  //Oyun başladığında karakter sağa baktığı için true değeri veriyoruz.
+    }
+	
+
+
+	void FixedUpdate () {
+
+        float horizontal = Input.GetAxis("Horizontal");  //Horizontal sistemi için değişken yaptık.horizontal değişkeni a,d ve yön tuşlarına göre -1 vey 1 değeri alacak.
+
+        HandleMovement(horizontal);
+        //Yeni
+        Flip(horizontal);
+	}
+
+
+    private void HandleMovement(float horizontal)
+    {
+        myRigidBody2D.velocity = new Vector2(horizontal * movementSpeed, myRigidBody2D.velocity.y);
+    }
+//Yeni
+    private void Flip(float horizontal) { //Horizontal'a bağlı olarak karakterin yönünü değiştirir. 
+
+        if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight) {
+            facingRight = !facingRight;
+
+            Vector3 theScale = transform.localScale; //Karakter scale'ine referans yaptık.
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
+    }
+
+}
