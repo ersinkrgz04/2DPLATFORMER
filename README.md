@@ -1,4 +1,4 @@
 # 2DPLATFORMER
-UNITY 2D PLATFORM OYUNU KODLARI
-Herkese Merhaba bu dersimizde karakterimizi hareket ettirmeyi öğrendik.Hareketi Horizontal sistemiyle basit bir şekilde gerçekleştirdik.
+UNITY 2D PLATFORM OYUNU KODLARI 
+Herkese Merhaba derslerde yazdığım kodların tamamını burada paylaşacağım.
 Ders Linki : https://youtu.be/gcXN93cN7v8
